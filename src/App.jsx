@@ -1,18 +1,19 @@
 import { useState } from 'react'
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import './App.css'
-import PatientDashboard from './component/patient/PatientDashboard';
-import DoctorDashboard from './component/doctor/DoctorDashboard';
-import Login from './component/Login';
-import Register from './component/Register';
+import PatientDashboard from './pages/PatientDashboard';
+import DoctorDashboard from './pages/DoctorDashboard';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import ProtectedRoute from './component/ProtectedRoute';
 import decodeToken from './utils/decodeToken';
 import TimeSlots from './component/patient/TimeSlots';
 import AddConsultation from './component/doctor/AddConsultation';
 import Appointment from './component/patient/Appointment';
 import BookAppointment from './component/patient/BookAppointment';
-import { LandingPage } from './component/LandingPage';
-import NotFound from './component/NotFound';
+import { LandingPage } from './pages/LandingPage';
+import NotFound from './pages/NotFound';
+import PatientEditPage from './component/patient/PatientEditPage';
 
 function App() {
   
@@ -45,6 +46,7 @@ else{
           <Route path="/book-appointment" element={<ProtectedRoute role="Patient"><Appointment/></ProtectedRoute>}></Route>
           <Route path="/time-slots" element={<ProtectedRoute role="Doctor"><TimeSlots/></ProtectedRoute>}></Route>
           <Route path="/book-appointment/book" element={<ProtectedRoute role="Patient"><BookAppointment/></ProtectedRoute>}></Route>
+          <Route path="/patient/edit" element={<ProtectedRoute role="Patient"><PatientEditPage/></ProtectedRoute>}></Route>
           <Route path="*" element={<NotFound/>}></Route>
           </Routes>
     </Router>

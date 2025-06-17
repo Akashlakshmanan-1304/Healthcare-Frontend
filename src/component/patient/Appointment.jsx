@@ -18,7 +18,7 @@ export default function Appointment() {
         setError('Failed to fetch available doctors. Please try again later.');
         setLoading(false);
       });
-  }, []);
+  }, [doctors]);
 
   if (loading) {
     return (

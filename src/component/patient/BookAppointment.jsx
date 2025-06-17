@@ -8,10 +8,7 @@ export default function BookAppointment() {
   const location = useLocation();
   const navigate = useNavigate();
   const patientId = decodeToken()?.id;
-
-  // Get doctorId and slot from navigation state
   const { doctorId, slot } = location.state || {};
-  // Extract start time from slot string (e.g., "19:30-20:00" => "19:30")
   const timeSlot = slot?.split("-")[0];
   console.log(patientId, doctorId, timeSlot);
 

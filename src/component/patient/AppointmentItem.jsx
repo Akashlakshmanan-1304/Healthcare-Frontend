@@ -17,7 +17,6 @@ export default function AppointmentItem({ appointment, role, onCancelSuccess }) 
     try {
       await axios.put(`/appointments/${appointment.appointmentId}/cancel`);
       setStatus("CANCELLED");
-      // Call the success callback to handle time slot return
       if (onCancelSuccess) {
         onCancelSuccess(appointment);
       }

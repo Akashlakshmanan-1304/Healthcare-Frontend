@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function AppointmentCard({ appointment }) {
+function AppointmentCard({ appointment, refreshAppointments }) {
   const navigate = useNavigate();
 
   const handleAddConsultation = () => {
@@ -15,8 +15,6 @@ function AppointmentCard({ appointment }) {
     });
   };
 
-  
-
   return (
     <div className="card mb-3 shadow-sm border-primary">
       <div className="card-body">
@@ -27,9 +25,8 @@ function AppointmentCard({ appointment }) {
              <p className="badge bg-primary me-2">
                 {appointment.status}
               </p>
-             
-              <p >
-              <small className="text-muted">ID: {appointment.appointmentId}</small>
+              <p>
+                <small className="text-muted">ID: {appointment.appointmentId}</small>
               </p>
             </div>
             <div className="d-flex flex-column flex-md-row">

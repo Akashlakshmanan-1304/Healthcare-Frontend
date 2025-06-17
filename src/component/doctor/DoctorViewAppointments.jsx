@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from '../../utils/axiosInstance';
 import decodeToken from '../../utils/decodeToken';
 import AppointmentCard from './AppointmentCard';
@@ -10,22 +10,23 @@ export default function DoctorViewAppointments() {
   const [error, setError] = useState(null);
   const doctorId = decodeToken()?.id;
 
-  useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        const url = `/doctor/${doctorId}/appointments`;
-        const response = await axios.get(url);
-        setAppointments(response.data);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching appointments:", err);
-        setError("Failed to fetch appointments. Please try again later.");
-        setLoading(false);
-      }
-    };
+  const fetchAppointments = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const url = `/doctor/${doctorId}/appointments`;
+      const response = await axios.get(url);
+      setAppointments(response.data);
+      setLoading(false);
+    } catch (err) {
+      setError("Failed to fetch appointments. Please try again later.");
+      setLoading(false);
+    }
+  }, [doctorId]);
 
+  useEffect(() => {
     fetchAppointments();
-  }, [doctorId]); // Removed appointments from dependencies to avoid infinite loops
+  }, [fetchAppointments]);
 
   const bookedAppointments = appointments.filter((a) => a.status === "BOOKED");
 
@@ -66,6 +67,7 @@ export default function DoctorViewAppointments() {
                 <AppointmentCard 
                   key={appointment.appointmentId} 
                   appointment={appointment} 
+                  refreshAppointments={fetchAppointments}
                 />
               ))}
             </div>

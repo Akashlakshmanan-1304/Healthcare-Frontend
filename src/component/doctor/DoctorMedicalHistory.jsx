@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../utils/axiosInstance';
 import decodeToken from '../../utils/decodeToken';
-import { FaUserMd, FaUserInjured, FaFileMedicalAlt, FaPrescriptionBottleAlt, FaCalendarAlt } from 'react-icons/fa';
+import { FaUserMd, FaUserInjured, FaFileMedicalAlt, FaPrescriptionBottleAlt, FaCalendarAlt, FaSearch } from 'react-icons/fa';
 
 export default function DoctorMedicalHistory({ role }) {
   const [consultations, setConsultations] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const userId = decodeToken()?.id;
 
   useEffect(() => {
     const url = `/doctor/${userId}/consultations`;
     axios.get(url).then(res => setConsultations(res.data));
   }, [role, userId]);
+
+  const filteredConsultations = consultations.filter(c =>
+    c.patientName?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="container-fluid p-0">
@@ -23,13 +28,28 @@ export default function DoctorMedicalHistory({ role }) {
         </div>
         
         <div className="card-body p-0">
-          {consultations.length === 0 ? (
+          {/* Search Bar */}
+          <div className="p-3">
+            <div className="input-group" style={{ maxWidth: 400 }}>
+              <span className="input-group-text bg-white">
+                <FaSearch />
+              </span>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search by patient name"
+                value={searchTerm}
+                onChange={e => setSearchTerm(e.target.value)}
+              />
+            </div>
+          </div>
+          {filteredConsultations.length === 0 ? (
             <div className="text-center py-4 text-muted">
               No consultation records found
             </div>
           ) : (
             <div className="list-group list-group-flush">
-              {consultations.map((c, i) => (
+              {filteredConsultations.map((c, i) => (
                 <div key={i} className="list-group-item border-0 py-3">
                   <div className="d-flex flex-column flex-md-row">
                     <div className="col-md-4 mb-3 mb-md-0">
