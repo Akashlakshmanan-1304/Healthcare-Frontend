@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function AppointmentCard({ appointment, refreshAppointments }) {
+function AppointmentCard({ appointment }) {
   const navigate = useNavigate();
 
   const handleAddConsultation = () => {

@@ -1,10 +1,9 @@
- import React, { useEffect, useState } from 'react'
+ import React, {  useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import DoctorProfileCard from '../component/doctor/DoctorProfileCard';
 import PatientProfileCard from '../component/patient/ProfileCard';
 import decodeToken from '../utils/decodeToken';
 import logo from '../assets/logo.png';
-
 export const LandingPage = () => {
     const navigate = useNavigate();
 const token = localStorage.getItem('token');
@@ -13,8 +12,7 @@ const role = decodeToken()?.role || '';
 const handleRegisterView = (e) => {
   e.preventDefault();
   if (token) {
-   
-     if (role === 'Doctor') navigate('/doctor');
+    if (role === 'Doctor') navigate('/doctor');
     else if (role === 'Patient') navigate('/patient');
     else {
       alert('Unknown role');

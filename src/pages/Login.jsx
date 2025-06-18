@@ -18,8 +18,8 @@ export default function Login({ setToken, setRole }) {
       localStorage.setItem('token', token);
       localStorage.setItem('role', payload.role);
    
-      if (payload.role === 'Doctor') navigate("/doctor");
-      else if (payload.role === 'Patient') navigate("/patient");
+      if (payload.role === 'Doctor') navigate("/doctor",{replace: true});
+      else if (payload.role === 'Patient') navigate("/patient",{replace: true});
     } catch (err) {
       console.log(email, password, err);
       alert('Login failed');

@@ -27,7 +27,7 @@ export default function Register() {
       });
       console.log(res.data);
       alert('Registration successful');
-      navigate("/login");
+      navigate("/login",{ replace: true });
     } catch (err) {
       console.error(err);
       alert(err.response?.data?.message || 'Registration failed');

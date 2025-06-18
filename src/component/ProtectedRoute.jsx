@@ -4,7 +4,7 @@ export default function ProtectedRoute({children,role:allowedRole}) {
     const token =localStorage.getItem("token");
     const role = localStorage.getItem("role");
     if(!token||role!=allowedRole){
-        return <Navigate to="/login"/>;
+        return <Navigate to="/"/>;
     }
     return children;
 }
