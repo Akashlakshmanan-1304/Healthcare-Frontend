@@ -61,7 +61,6 @@ export default function ProfileCard({ onClose }) {
           <button
             type="button"
             className="btn-close btn-close-white"
-            aria-label="Close"
             onClick={onClose}
           />
         </div>

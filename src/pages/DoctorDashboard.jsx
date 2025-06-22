@@ -29,7 +29,7 @@ export default function DoctorDashboard() {
             className="btn btn-link p-0 ms-auto"
             style={{ border: "none", background: "none" }}
             onClick={() => setShowProfile(!showProfile)}
-            aria-label="Profile"
+          
           >
             <div className="position-relative">
               <img

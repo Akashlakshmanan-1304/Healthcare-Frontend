@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import decodeToken from "../../utils/decodeToken";
+import { useNavigate } from "react-router-dom";
 import axios from "../../utils/axiosInstance";
-import { FaUserMd, FaEnvelope, FaSignOutAlt } from "react-icons/fa";
+import { FaUserMd, FaEnvelope, FaSignOutAlt,FaEdit } from "react-icons/fa";
 
 export default function DoctorProfileCard({ onClose }) {
   const doctorId = decodeToken()?.id;
   const [user, setUser] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (doctorId) {
       axios
@@ -15,7 +16,9 @@ export default function DoctorProfileCard({ onClose }) {
         .catch(() => setUser(null));
     }
   }, [doctorId]);
-
+ const handleEdit = () => {
+    navigate("/doctor/edit", { state: { doctorId } });
+  };
   const handleLogout = () => {
     localStorage.clear();
     window.location.href = "/";
@@ -37,12 +40,21 @@ export default function DoctorProfileCard({ onClose }) {
           <FaUserMd className="me-2" />
           Doctor Profile
         </h5>
-        <button
-          type="button"
-          className="btn-close btn-close-white"
-          aria-label="Close"
-          onClick={onClose}
-        />
+        <div className="d-flex align-items-center">
+                  {/* Edit Icon */}
+                  <FaEdit
+                    className="me-3"
+                    style={{ cursor: "pointer" }}
+                    title="Edit Profile"
+                    onClick={handleEdit}
+                  />
+                  <button
+                    type="button"
+                    className="btn-close btn-close-white"
+                    onClick={onClose}
+                  />
+                </div>
+              
       </div>
       
       <div className="card-body">

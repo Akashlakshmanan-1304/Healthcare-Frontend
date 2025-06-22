@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import ViewAppointments from '../component/patient/ViewAppointments';
 import MedicalHistory from '../component/patient/MedicalHistory';
 import ProfileCard from '../component/patient/ProfileCard';
-import { FaUserCircle, FaCalendarAlt, FaFileMedicalAlt } from 'react-icons/fa';
+import {  FaCalendarAlt, FaFileMedicalAlt } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
-
 export default function PatientDashboard() {
   const [view, setView] = useState("appointments");
   const [showProfile, setShowProfile] = useState(false);
@@ -13,7 +12,6 @@ export default function PatientDashboard() {
   const handleNavigateHome = () => {
   navigate('/');
   };
-
   return (
     <div className="container-fluid p-0 min-vh-100 bg-light">
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
@@ -24,7 +22,6 @@ export default function PatientDashboard() {
             className="btn btn-link p-0 ms-auto"
             style={{ border: "none", background: "none" }}
             onClick={() => setShowProfile(!showProfile)}
-            aria-label="Profile"
           >
              <div className="position-relative">
               <img

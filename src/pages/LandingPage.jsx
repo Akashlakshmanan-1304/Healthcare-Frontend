@@ -223,7 +223,7 @@ const handleRegisterView = (e) => {
         <div className="container">
             <div className="row align-items-center">
                 <div className="col-md-6">
-                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Appointment" className="img-fluid rounded" />
+                    <img src="https://www.vetport.com/main/img/online%20booking%20of%20appointment%20for%20veterinary%20clinics.jpg" alt="Appointment" className="img-fluid rounded" />
                 </div>
                 <div className="col-md-6">
                     <h3>Book Your Appointment Easily</h3>
@@ -356,7 +356,7 @@ const handleRegisterView = (e) => {
             <p className="mb-0">© 2025 CarePlus. Crafted with ❤️ to serve your health better.</p>
         </div>
     </footer>
-    <div style={{ marginTop: "20px" }}>Hello</div>
+    
     </div>
   )
 }

@@ -14,6 +14,7 @@ import BookAppointment from './component/patient/BookAppointment';
 import { LandingPage } from './pages/LandingPage';
 import NotFound from './pages/NotFound';
 import PatientEditPage from './component/patient/PatientEditPage';
+import DoctorEditPage from './component/doctor/DoctorEditPage';
 
 function App() {
   
@@ -47,6 +48,7 @@ else{
           <Route path="/time-slots" element={<ProtectedRoute role="Doctor"><TimeSlots/></ProtectedRoute>}></Route>
           <Route path="/book-appointment/book" element={<ProtectedRoute role="Patient"><BookAppointment/></ProtectedRoute>}></Route>
           <Route path="/patient/edit" element={<ProtectedRoute role="Patient"><PatientEditPage/></ProtectedRoute>}></Route>
+          <Route path="/doctor/edit" element={<ProtectedRoute role="Doctor"><DoctorEditPage/></ProtectedRoute>}></Route>
           <Route path="*" element={<NotFound/>}></Route>
           </Routes>
     </Router>

@@ -81,12 +81,9 @@ export default function DoctorTimeSlots() {
       setTimeSlots(response.data);
       setError(null); 
       setLoading(false);
-    } catch (err) {
-      if (err.response && err.response.status === 422) {
-        setSubmitError('Patient already has an appointment at this time slot.');
-      } else {
-        setSubmitError(err.response?.data || 'Failed to update time slot. Please try again later.');
-      }
+    } 
+    catch (err) {
+      setSubmitError(err.response?.data || 'Failed to update time slot. Please try again later.');
       setSubmitLoading(false);
     }
   };

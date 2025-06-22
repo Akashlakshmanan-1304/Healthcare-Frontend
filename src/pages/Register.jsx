@@ -16,7 +16,6 @@ export default function Register() {
       alert('Passwords do not match');
       return;
     }
-
     try {
       const res = await axios.post('http://localhost:8001/api/auth/register', {
         name,
@@ -89,7 +88,7 @@ export default function Register() {
             </div>
 
             <div className="row">
-              <div className="col-md-6 mb-4">
+              <div className="col-md-6 mb-4 ">
                 <label className="form-label fs-5">Password</label>
                 <input
                   type="password"
