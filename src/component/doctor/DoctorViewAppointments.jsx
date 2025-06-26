@@ -10,7 +10,7 @@ export default function DoctorViewAppointments() {
   const [error, setError] = useState(null);
   const doctorId = decodeToken()?.id;
 
-  const fetchAppointments = useCallback(async () => {
+  const fetchAppointments =async () => {
     setLoading(true);
     setError(null);
     try {
@@ -22,11 +22,11 @@ export default function DoctorViewAppointments() {
       setError("Failed to fetch appointments. Please try again later.");
       setLoading(false);
     }
-  }, [doctorId]);
+  };
 
   useEffect(() => {
     fetchAppointments();
-  }, [fetchAppointments]);
+  }, []);
 
   const bookedAppointments = appointments.filter((a) => a.status === "BOOKED");
 
